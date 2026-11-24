@@ -1,0 +1,1 @@
+export default function Footer() { return <footer className="site-footer"><div><strong>AniShelf</strong><span>Ta bibliothèque personnelle d’animes.</span></div><small>Catalogue fourni par AniList · Projet indépendant non affilié à AniList.</small></footer> }
