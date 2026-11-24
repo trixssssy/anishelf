@@ -1,3 +1,4 @@
+
 name: Déployer AniShelf sur GitHub Pages
 
 on:
@@ -20,19 +21,26 @@ jobs:
     steps:
       - name: Récupérer le dépôt
         uses: actions/checkout@v4
+
       - name: Installer Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
+
       - name: Installer les dépendances
         run: npm install
+
       - name: Construire le site
         run: npm run build
         env:
           VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
+
       - name: Préparer GitHub Pages
         uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
       - name: Envoyer le dossier dist
         uses: actions/upload-pages-artifact@v3
         with:
@@ -48,3 +56,4 @@ jobs:
       - name: Publier le site
         id: deployment
         uses: actions/deploy-pages@v4
+
